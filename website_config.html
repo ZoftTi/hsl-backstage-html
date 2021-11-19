@@ -38,16 +38,10 @@
             </ul>
           </li>
           <li class="nav-item nav-item-has-subnav">
-            <a href="javascript:void(0)"><i class="mdi mdi-rotate-3d"></i> 校企合作管理</a>
-            <ul class="nav nav-subnav">
-              <li> <a href="./cooperation_list.html">校企合作管理</a> </li>
-              <li> <a href="./cooperation_classification.html">校企合作分类管理</a> </li>
-            </ul>
-          </li>
-          <li class="nav-item nav-item-has-subnav">
             <a href="javascript:void(0)"><i class="mdi mdi-file-image"></i> 图库管理</a>
             <ul class="nav nav-subnav">
               <li> <a href="./gallery.html">图库管理</a> </li>
+              <li> <a href="./gallery_recovery.html">图片回收站</a> </li>
             </ul>
           </li>
           <li class="nav-item nav-item-has-subnav active open">
@@ -273,12 +267,17 @@
                     <div class="form-group">
                       <label for="web_site_copyright">版权信息</label>
                       <input class="form-control" type="text" id="web_site_copyright" name="web_site_copyright" value="" placeholder="请输入版权信息" >
-                      <small class="help-block">调用方式：<code>config('web_site_copyright')</code></small>
+                      <small class="help-block">推荐格式：<code>Copyright © 2020-2021 ***. All rights reserved.</code></small>
                     </div>
                     <div class="form-group">
-                      <label for="web_site_icp">备案信息</label>
+                      <label for="web_site_icp">IPC备案信息</label>
                       <input class="form-control" type="text" id="web_site_icp" name="web_site_icp" value="" placeholder="请输入备案信息" >
-                      <small class="help-block">调用方式：<code>config('web_site_icp')</code></small>
+                      <small class="help-block">输入 IPC 备案号即可</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="web_site_ga">公安备案信息</label>
+                      <input class="form-control" type="text" id="web_site_ga" name="web_site_ga" value="" placeholder="请输入备案信息" >
+                      <small class="help-block">非必填项, 从公安备案网站获取</small>
                     </div>
                     <div class="form-group">
                       <label class="btn-block" for="web_site_status">站点开关</label>

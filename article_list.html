@@ -58,16 +58,10 @@
                 </ul>
               </li>
               <li class="nav-item nav-item-has-subnav">
-                <a href="javascript:void(0)"><i class="mdi mdi-rotate-3d"></i> 校企合作管理</a>
-                <ul class="nav nav-subnav">
-                  <li> <a href="./cooperation_list.html">校企合作管理</a> </li>
-                  <li> <a href="./cooperation_classification.html">校企合作分类管理</a> </li>
-                </ul>
-              </li>
-              <li class="nav-item nav-item-has-subnav">
                 <a href="javascript:void(0)"><i class="mdi mdi-file-image"></i> 图库管理</a>
                 <ul class="nav nav-subnav">
                   <li> <a href="./gallery.html">图库管理</a> </li>
+                  <li> <a href="./gallery_recovery.html">图片回收站</a> </li>
                 </ul>
               </li>
               <li class="nav-item nav-item-has-subnav">
@@ -655,7 +649,7 @@
                         <div class="form-group col-md-12">
                           <label for="type">分类</label>
                           <div class="form-controls">
-                            <select name="type" class="form-control" id="type">
+                            <select name="type" class="form-control" id="type" value="1">
                               <option value="1">新闻</option>
                               <option value="2">行业动态</option>
                               <option value="3">合作院校</option>
@@ -665,32 +659,29 @@
                         </div>
                         <div class="form-group col-md-12">
                           <label for="title">标题</label>
-                          <input type="text" class="form-control" id="title" name="title" value=""
+                          <input type="text" class="form-control" id="title" name="title" value="大中专院校应届毕业生求职攻略 | 聘歌第一届校园就业大使专题培训"
                             placeholder="请输入标题" />
                         </div>
                         <div class="form-group col-md-12">
                           <label for="seo_description">描述</label>
-                          <textarea class="form-control" id="seo_description" name="seo_description" rows="5" value=""
-                            placeholder="描述"></textarea>
+                          <textarea class="form-control" id="seo_description" name="seo_description" rows="5" placeholder="描述">为了提高学生的求职技能，为将来的职业规划打好基础，于5月7日晚上，在广东省高新技术高级技工学校图书馆多媒体会议室举办了聘歌·校园就业大使专题培训，本次培训邀请到大学生就业辅导专家、资深人力资源管理师——杨奎仁老师为同学们分享“大中专院校应届毕业生求职攻略”，广东省高新技术高级技工学校100多名校园就业大使参加了本次专题培训。</textarea>
                         </div>
                         <div class="form-group col-md-12">
                           <label>封面上传</label>
                           <div class="form-controls">
                             <ul class="list-inline clearfix lyear-uploads-pic">
-                              <!-- <li class="col-xs-4 col-sm-3 col-md-2">
+                              <li class="col-xs-4 col-sm-3 col-md-2">
                                 <figure>
-                                  <img src="images/gallery/15.jpg" alt="图片一">
+                                  <img src="https://xibaiimg.gz.bcebos.com/hongshulinjy/1620628238436499.png" alt="图片一">
                                   <figcaption>
-                                    <a class="btn btn-round btn-square btn-primary" href="#!"><i
-                                        class="mdi mdi-eye"></i></a>
-                                    <a class="btn btn-round btn-square btn-danger" href="#!"><i
-                                        class="mdi mdi-delete"></i></a>
+                                    <a class="btn btn-round btn-square btn-primary" href="#!"><i class="mdi mdi-eye"></i></a>
+                                    <a class="btn btn-round btn-square btn-danger" href="#!"><i class="mdi mdi-delete"></i></a>
                                   </figcaption>
                                 </figure>
-                              </li>-->
-                              <li class="col-xs-4 col-sm-3 col-md-2" style="min-height:130px">
-                                <a class="pic-add" id="add-pic-btn" href="#!" title="点击上传"></a>
                               </li>
+                              <!-- <li class="col-xs-4 col-sm-3 col-md-2" style="min-height:130px">
+                                <a class="pic-add" id="add-pic-btn" href="#!" title="点击上传"></a>
+                              </li> -->
                             </ul>
                           </div>
                         </div>
@@ -702,19 +693,22 @@
                         </div>
                         <div class="form-group col-md-12">
                           <label for="date">日期</label>
-                          <input class="form-control js-datepicker m-b-10" type="text" id="example-datepicker"
-                            name="example-datepicker" placeholder="yyyy-mm-dd" value="" data-date-format="yyyy-mm-dd" />
+                          <input class="form-control js-datepicker m-b-10" type="text" id="example-datepicker" name="example-datepicker" placeholder="yyyy-mm-dd" value="2021-05-10" data-date-format="yyyy-mm-dd" />
                         </div>
                         <div class="form-group col-md-12">
-                          <label for="topping">置顶</label>
-                          <div class="clearfix">
-                            <label class="lyear-radio radio-inline radio-primary">
-                              <input type="radio" name="topping" value="0"><span>是</span>
-                            </label>
-                            <label class="lyear-radio radio-inline radio-primary">
-                              <input type="radio" name="topping" value="1" checked><span>否</span>
-                            </label>
-                          </div>
+                          <label for="date">SEO设置-文章标题</label>
+                          <input type="text" class="form-control" id="seo-title" name="seo-title" value="大中专院校应届毕业生求职攻略 | 聘歌第一届校园就业大使专题培训" placeholder="请输入SEO标题" />
+                          <small class="help-block">若该内容为空，则与上方文章标题一致</small>
+                        </div>
+                        <div class="form-group col-md-12">
+                          <label for="date">SEO设置-文章描述</label>
+                          <textarea class="form-control" id="seo_description" name="seo_description" rows="5" value="" placeholder="描述">为了提高学生的求职技能，为将来的职业规划打好基础，于5月7日晚上，在广东省高新技术高级技工学校图书馆多媒体会议室举办了聘歌·校园就业大使专题培训，本次培训邀请到大学生就业辅导专家、资深人力资源管理师——杨奎仁老师为同学们分享“大中专院校应届毕业生求职攻略”，广东省高新技术高级技工学校100多名校园就业大使参加了本次专题培训。</textarea>
+                          <small class="help-block">若该内容为空，则与上方文章描述一致</small>
+                        </div>
+                        <div class="form-group col-md-12">
+                          <label for="seo-keywords">SEO设置-关键词设置</label>
+                          <input type="text" class="form-control" id="seo-keywords" name="seo-keywords" value="新闻, 资讯, 广州红树林教育科技有限公司, 教育, 面试," placeholder="请输入SEO关键词" />
+                          <small class="help-block">多个关键词用","分割</small>
                         </div>
                         <div class="form-group col-md-12">
                           <label for="recommend">推荐</label>

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh">
 
 <head>
@@ -46,16 +47,10 @@
                 </ul>
               </li>
               <li class="nav-item nav-item-has-subnav">
-                <a href="javascript:void(0)"><i class="mdi mdi-rotate-3d"></i> 校企合作管理</a>
-                <ul class="nav nav-subnav">
-                  <li> <a href="./cooperation_list.html">校企合作管理</a> </li>
-                  <li> <a href="./cooperation_classification.html">校企合作分类管理</a> </li>
-                </ul>
-              </li>
-              <li class="nav-item nav-item-has-subnav">
                 <a href="javascript:void(0)"><i class="mdi mdi-file-image"></i> 图库管理</a>
                 <ul class="nav nav-subnav">
                   <li> <a href="./gallery.html">图库管理</a> </li>
+                  <li> <a href="./gallery_recovery.html">图片回收站</a> </li>
                 </ul>
               </li>
               <li class="nav-item nav-item-has-subnav">
@@ -279,17 +274,6 @@
                       <label>封面上传</label>
                       <div class="form-controls">
                         <ul class="list-inline clearfix lyear-uploads-pic">
-                          <!-- <li class="col-xs-4 col-sm-3 col-md-2">
-                            <figure>
-                              <img src="images/gallery/15.jpg" alt="图片一">
-                              <figcaption>
-                                <a class="btn btn-round btn-square btn-primary" href="#!"><i
-                                    class="mdi mdi-eye"></i></a>
-                                <a class="btn btn-round btn-square btn-danger" href="#!"><i
-                                    class="mdi mdi-delete"></i></a>
-                              </figcaption>
-                            </figure>
-                          </li>-->
                           <li class="col-xs-4 col-sm-3 col-md-2" style="min-height:130px">
                             <a class="pic-add" id="add-pic-btn" href="#!" title="点击上传"></a>
                           </li>
@@ -308,15 +292,19 @@
                         name="example-datepicker" placeholder="yyyy-mm-dd" value="" data-date-format="yyyy-mm-dd" />
                     </div>
                     <div class="form-group col-md-12">
-                      <label for="topping">置顶</label>
-                      <div class="clearfix">
-                        <label class="lyear-radio radio-inline radio-primary">
-                          <input type="radio" name="topping" value="0"><span>是</span>
-                        </label>
-                        <label class="lyear-radio radio-inline radio-primary">
-                          <input type="radio" name="topping" value="1" checked><span>否</span>
-                        </label>
-                      </div>
+                      <label for="date">SEO设置-文章标题</label>
+                      <input type="text" class="form-control" id="seo-title" name="seo-title" value="" placeholder="请输入SEO标题" />
+                      <small class="help-block">若该内容为空，则与上方文章标题一致</small>
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="date">SEO设置-文章描述</label>
+                      <textarea class="form-control" id="seo_description" name="seo_description" rows="5" value="" placeholder="描述"></textarea>
+                      <small class="help-block">若该内容为空，则与上方文章描述一致</small>
+                    </div>
+                    <div class="form-group col-md-12">
+                      <label for="seo-keywords">SEO设置-关键词设置</label>
+                      <input type="text" class="form-control" id="seo-keywords" name="seo-keywords" value="" placeholder="请输入SEO关键词" />
+                      <small class="help-block">多个关键词用","分割</small>
                     </div>
                     <div class="form-group col-md-12">
                       <label for="recommend">推荐</label>
