@@ -77,12 +77,10 @@
             <ul class="topbar-right">
               <li class="dropdown dropdown-profile">
                 <a href="javascript:void(0)" data-toggle="dropdown">
-                  <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt="笔下光年" />
-                  <span>笔下光年 <span class="caret"></span></span>
+                  <img class="img-avatar img-avatar-48 m-r-10" src="images/users/avatar.jpg" alt=" Admin" />
+                  <span> Admin <span class="caret"></span></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                  <li> <a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a> </li>
-                  <li> <a href="lyear_pages_edit_pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
                   <li> <a href="javascript:void(0)"><i class="mdi mdi-delete"></i> 清空缓存</a></li>
                   <li class="divider"></li>
                   <li> <a href="lyear_pages_login.html"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
@@ -241,10 +239,10 @@
               <div class="card">
                 <div class="card-toolbar clearfix">
                   <div class="toolbar-btn-action">
-                    <a class="btn btn-primary m-r-5" href="#!"><i class="mdi mdi-plus"></i> 新增</a>
-                    <a class="btn btn-warning m-r-5" href="#!"><i class="mdi mdi-block-helper"></i> 禁用</a>
-                    <a class="btn btn-info" href="#!"><i class="mdi mdi-sort"></i> 排序</a>
-                    <a class="btn btn-danger" href="#!"><i class="mdi mdi-window-close"></i> 删除</a>
+                    <a class="btn btn-primary m-r-5" href="#!" data-toggle="modal" data-target=".upload-banner-modal"><i class="mdi mdi-plus"></i> 新增</a>
+                    <a class="btn btn-warning m-r-5" href="#!" data-toggle="modal" data-target=".disables-banner-modal"><i class="mdi mdi-block-helper"></i> 禁用</a>
+                    <a class="btn btn-info" href="#!" data-toggle="modal" data-target=".banner-sort-modal"><i class="mdi mdi-sort"></i> 排序</a>
+                    <a class="btn btn-danger" href="#!" data-toggle="modal" data-target=".remove-banner-modal"><i class="mdi mdi-window-close"></i> 删除</a>
                   </div>
                 </div>
                 <div class="card-body">
@@ -278,12 +276,15 @@
                           <td>2021-05-10</td>
                           <td>
                             <div class="btn-group">
-                              <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip"><i
-                                  class="mdi mdi-pencil"></i></a>
-                              <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip"><i
-                                  class="mdi mdi-window-close"></i></a>
-                              <a class="btn btn-xs btn-default" href="#!" title="禁用" data-toggle="tooltip"><i
-                                  class="mdi mdi-block-helper"></i></a>
+                              <a class="btn btn-xs btn-default" href="#!" title="编辑" data-toggle="tooltip">
+                                <i class="mdi mdi-pencil" data-toggle="modal" data-target=".edit-banner-modal"></i>
+                              </a>
+                              <a class="btn btn-xs btn-default" href="#!" title="删除" data-toggle="tooltip">
+                                <i class="mdi mdi-window-close" data-toggle="modal" data-target=".remove-confirm-modal"></i>
+                              </a>
+                              <a class="btn btn-xs btn-default" href="#!" title="禁用" data-toggle="tooltip">
+                                <i class="mdi mdi-block-helper" data-toggle="modal" data-target=".disable-confirm-modal"></i>
+                              </a>
                             </div>
                           </td>
                         </tr>
@@ -315,6 +316,274 @@
 
       </main>
       <!--End 页面主要内容-->
+      <!-- 批量上传图片 -->
+      <div class="modal fade upload-banner-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myLargeModalLabel">上传轮播图</h4>
+            </div>
+            <div class="modal-body">
+              <form action="#!" method="post" class="row">
+                <div class="form-group col-md-12">
+                  <div class="form-controls">
+                    <ul class="list-inline clearfix lyear-uploads-pic">
+                      <li class="col-xs-4 col-sm-4 col-md-4">
+                        <figure style="width: 100%;height: 100%;">
+                          <img style="object-fit: cover;width: 100%;height: 100%;" src="https://xibaiimg.gz.bcebos.com/hongshulinjy/1620628238436499.png" alt="图片一">
+                          <figcaption>
+                            <a class="btn btn-round btn-square btn-danger" href="#!"><i class="mdi mdi-delete"></i></a>
+                          </figcaption>
+                        </figure>
+                      </li>
+                      <li class="col-xs-4 col-sm-4 col-md-4" style="min-height:130px" onclick="document.querySelector('#picture_file').click()">
+                        <a class="pic-add" id="add-pic-btn" href="#!" title="点击上传"></a>
+                        <input type="file" id="picture_file" style="visibility: hidden;">
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </form> 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary">上传</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 批量禁用轮播图 -->
+      <div class="modal fade disables-banner-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="myLargeModalLabel">禁用以下轮播图</h4>
+            </div>
+            <div class="modal-body">
+              <!-- 是否禁用以下轮播图 -->
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>编号</th>
+                    <th>标题</th>
+                    <th>预览</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>轮播图1</td>
+                    <td><a href="#!">预览</a></td>
+                    <td>2021-05-10</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-xs btn-default" href="#!" title="移除" data-toggle="tooltip"><i
+                            class="mdi mdi-window-close"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <ul class="pagination">
+                <li class="disabled"><span>«</span></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#1">2</a></li>
+                <li><a href="#1">3</a></li>
+                <li><a href="#1">4</a></li>
+                <li><a href="#!">»</a></li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 轮播图排序 -->
+      <div class="modal fade banner-sort-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="myLargeModalLabel">轮播图排序</h4>
+            </div>
+            <div class="modal-body">
+              <!-- 是否禁用以下轮播图 -->
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>编号</th>
+                    <th>标题</th>
+                    <th>预览</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>轮播图1</td>
+                    <td><a href="#!">预览</a></td>
+                    <td>2021-05-10</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-xs btn-default" href="#!" title="上移" data-toggle="tooltip"><i
+                            class="mdi mdi-arrow-up"></i></a>
+                        <a class="btn btn-xs btn-default" href="#!" title="下移" data-toggle="tooltip"><i
+                            class="mdi mdi-arrow-down"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 批量删除轮播图 -->
+      <div class="modal fade remove-banner-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="myLargeModalLabel">删除以下轮播图</h4>
+            </div>
+            <div class="modal-body">
+              <!-- 是否禁用以下轮播图 -->
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>编号</th>
+                    <th>标题</th>
+                    <th>预览</th>
+                    <th>添加时间</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>轮播图1</td>
+                    <td><a href="#!">预览</a></td>
+                    <td>2021-05-10</td>
+                    <td>
+                      <div class="btn-group">
+                        <a class="btn btn-xs btn-default" href="#!" title="移除" data-toggle="tooltip"><i
+                            class="mdi mdi-window-close"></i></a>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <ul class="pagination">
+                <li class="disabled"><span>«</span></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#1">2</a></li>
+                <li><a href="#1">3</a></li>
+                <li><a href="#1">4</a></li>
+                <li><a href="#!">»</a></li>
+              </ul>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 删除轮播图确认 -->
+      <div class="modal fade remove-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="myLargeModalLabel">删除轮播图</h4>
+            </div>
+            <div class="modal-body">
+              是否删除此轮播图
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 禁用轮播图确认 -->
+      <div class="modal fade disable-confirm-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+              <h4 class="modal-title" id="myLargeModalLabel">禁用轮播图</h4>
+            </div>
+            <div class="modal-body">
+              是否禁用此轮播图
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary">确定</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- 编辑轮播图 -->
+      <div class="modal fade edit-banner-modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myLargeModalLabel">编辑轮播图</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-lg-12">
+                  <form action="#!" method="post" class="row">
+                    <div class="form-group col-md-12">
+                      <label for="title">标题</label>
+                      <input type="text" class="form-control" id="title" name="title" value="" placeholder="请输入标题" />
+                    </div>
+                    <div class="form-group col-md-12">
+                      <div class="form-controls">
+                        <ul class="list-inline clearfix lyear-uploads-pic">
+                          <li class="col-xs-12 col-sm-12 col-md-12">
+                            <figure style="width: 100%;height: 100%;max-height: 500px;">
+                              <img style="object-fit: cover;width: 100%;height: 100%;" src="https://xibaiimg.gz.bcebos.com/hongshulinjy/1620628238436499.png" alt="图片一">
+                              <figcaption>
+                                <button class="btn btn-square btn-primary" type="button"  onclick="document.querySelector('#reset_picture_file').click()">重新上传图片</button>
+                                <input type="file" id="reset_picture_file" style="visibility: hidden;display: none;">
+                              </figcaption>
+                            </figure>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+              <button type="button" class="btn btn-primary">保存</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
